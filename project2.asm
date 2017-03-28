@@ -8,8 +8,9 @@ error: .asciiz "Error--Please enter a number from 0 to 127 for an instrument, 12
 .text #The following is programming
 
 #Main #main program is here
-main:  	jal input
-	jal test
+main:  	jal input #jumps to user input function
+	jal test  #jumps to test input function
+	
 
 # Prompt user for a number
 input:	addi $v0, $zero,51 #set v0 register for user prompt
