@@ -16,10 +16,11 @@ F:  .word 65
 G:  .word 67
 A:  .word 69
 B:  .word 71
+C1:  .word 72
+D1:  .word 74
 whole: .word 500
 half:  .word 250
-quart: .word .125
-rest: .word 32
+quart: .word 125
 play:  .word 33
 
 .text #The following is programming
@@ -27,20 +28,34 @@ play:  .word 33
 #Main #main program is here
 main:  	jal input #jumps to user input function
 	jal test  #jumps to test input function
+	
+#now the music begins
 	addi $v0,$zero,33 #sets the system call to play a note
 	addi $a1,$zero,500 #duration of the note
 	addi $a3,$zero,127 #sets volume to max
-	lw $a0,C
-	syscall #executes the system call
 	lw $a0,D
-	syscall
-	lw $a0,E
-	syscall
-	lw $a0,F
+	syscall #executes the system call
+	lw $a0,B
 	syscall
 	lw $a0,G
 	syscall
-	j main
+	lw $a0,D
+	syscall
+	lw $a1, half
+	lw $a0,E
+	syscall
+	lw $a0, F
+	syscall
+	lw $a0, G
+	syscall
+	lw $a0, E
+	syscall
+	lw $a0, G
+	syscall
+	lw $a1, whole
+	lw $a0, D
+	syscall
+	j main #jumps back to the beginning "main"
 	
 # Prompt user for a number
 input:	addi $v0, $zero,51 #set v0 register for user prompt
