@@ -10,6 +10,17 @@ beat:  .word 150 #length of a beat
 loudness: .word 127 #max 127
 rest: .word 32 #system call 32 = sleep
 C:  .word 60 #the note value for C
+D:  .word 62 
+E:  .word 64
+F:  .word 65
+G:  .word 67
+A:  .word 69
+B:  .word 71
+whole: .word 500
+half:  .word 250
+quart: .word .125
+rest: .word 32
+play:  .word 33
 
 .text #The following is programming
  
@@ -17,10 +28,18 @@ C:  .word 60 #the note value for C
 main:  	jal input #jumps to user input function
 	jal test  #jumps to test input function
 	addi $v0,$zero,33 #sets the system call to play a note
-	addi $a0,$zero,60 #note to be played
 	addi $a1,$zero,500 #duration of the note
 	addi $a3,$zero,127 #sets volume to max
+	lw $a0,C
 	syscall #executes the system call
+	lw $a0,D
+	syscall
+	lw $a0,E
+	syscall
+	lw $a0,F
+	syscall
+	lw $a0,G
+	syscall
 	j main
 	
 # Prompt user for a number
