@@ -34,7 +34,7 @@ main:  	jal input #jumps to user input function
 	jal test  #jumps to test input function
 	
 #now the music begins
-	addi $v0,$zero,33 #sets the system call to play a note
+	lw $v0, play#sets the system call to play a note
 	addi $a3,$zero,127 #sets volume to max
 	lw $a1, dothalf #duration of the note
 	lw $a0,E1#Dai
@@ -85,6 +85,88 @@ main:  	jal input #jumps to user input function
 	syscall
 	lw $a1, whole
 	lw $a0, D1#you
+	syscall
+	lw $a1, quart
+	lw $a0, E1#it
+	syscall
+	lw $a0, F1#won't
+	syscall
+	lw $a0, E1#be
+	syscall
+	lw $a0, D1#a
+	syscall
+	lw $a1, half
+	lw $a0, G1#sty
+	syscall
+	lw $a1, quart
+	lw $a0, E1#lish
+	syscall
+	lw $a0, D1#marr
+	syscall
+	lw $a1, whole
+	lw $a0, C1#iage
+	syscall
+	lw $a1, quart
+	lw $a0, D1#I
+	syscall
+	lw $a1, half
+	lw $a0, E1#can't
+	syscall
+	lw $a1, quart
+	lw $a0, C1#af
+	syscall
+	lw $a1, half
+	lw $a0, A#ford
+	syscall
+	lw $a1, quart
+	lw $a0, C1#a
+	syscall
+	lw $a0, A#carr
+	syscall
+	lw $a1, whole
+	lw $a0, G#age
+	syscall
+	lw $a1, quart
+	lw $a0, G#but
+	syscall
+	lw $a1, half
+	lw $a0, C1#you'll
+	syscall
+	lw $a1, quart
+	lw $a0, E1#look
+	syscall
+	lw $a1, half
+	lw $a0, D1#sweet
+	syscall
+	lw $a1, quart
+	lw $a0, G#up
+	syscall
+	lw $a1, half
+	lw $a0, C1#on
+	syscall
+	lw $a1, quart
+	lw $a0, E1#the
+	syscall
+	lw $a0, D1#seat
+	syscall
+	lw $a0, E1#of
+	syscall
+	lw $a0, F1#a
+	syscall
+	lw $a0, G1#bi
+	syscall
+	lw $a0, E1#cyc
+	syscall
+	lw $a0, C1#le
+	syscall
+	lw $a1, half
+	lw $a0, D1#built
+	syscall
+	lw $a1, quart
+	lw $a0, G#for
+	syscall
+	addi $a1, $zero, 750 #gives us the 6 beats to hold the note
+	lw $a0, C1#two
 	syscall
 	
 	j main #jumps back to the beginning "main"
