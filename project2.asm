@@ -18,7 +18,11 @@ A:  .word 69
 B:  .word 71
 C1:  .word 72
 D1:  .word 74
+E1:  .word 76
+F1:  .word 77
+G1:  .word 79
 whole: .word 500
+dothalf:  375
 half:  .word 250
 quart: .word 125
 play:  .word 33
@@ -31,30 +35,58 @@ main:  	jal input #jumps to user input function
 	
 #now the music begins
 	addi $v0,$zero,33 #sets the system call to play a note
-	addi $a1,$zero,500 #duration of the note
 	addi $a3,$zero,127 #sets volume to max
-	lw $a0,D
+	lw $a1, dothalf #duration of the note
+	lw $a0,E1#Dai
 	syscall #executes the system call
-	lw $a0,B
+	lw $a0,D1#sy
 	syscall
-	lw $a0,G
+	lw $a0,C1#Dai
 	syscall
-	lw $a0,D
+	lw $a0,G#sy
 	syscall
-	lw $a1, half
-	lw $a0,E
+	lw $a1, quart
+	lw $a0,A#give
 	syscall
-	lw $a0, F
+	lw $a0, B#me
 	syscall
-	lw $a0, G
+	lw $a0, C1#your
 	syscall
-	lw $a0, E
+	lw $a1,half
+	lw $a0, A#ans
 	syscall
-	lw $a0, G
+	lw $a1, quart
+	lw $a0, C1#wer
 	syscall
 	lw $a1, whole
-	lw $a0, D
+	lw $a0, G#Do
 	syscall
+	lw $a1, dothalf
+	lw $a0, D1#I'm
+	syscall
+	lw $a0, G1#Half
+	syscall
+	lw $a0, E1#Cra
+	syscall
+	lw $a0, C1#zy
+	syscall
+	lw $a1, quart
+	lw $a0, A#all
+	syscall
+	lw $a0, B#for
+	syscall
+	lw $a0, C1#the
+	syscall
+	lw $a1, half
+	lw $a0, D1#love
+	syscall
+	lw $a1, quart
+	lw $a0, E1#of
+	syscall
+	lw $a1, whole
+	lw $a0, D1#you
+	syscall
+	
 	j main #jumps back to the beginning "main"
 	
 # Prompt user for a number
