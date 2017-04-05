@@ -1,6 +1,6 @@
 # James Cheatham Project 2
 # User selects an integer 0-128, if it's 0-127 selects an instrument, 128 exits the program, anything else produces an error message
-
+# Once the instrument is set it goes on to play Daisy Bell.  Just like HAL!!  https://www.youtube.com/watch?v=hchUl3QlJZE
 # Set up variables for use
 .data #The following is to set variables
 prompt: .asciiz "Please enter a number between 0 and 128.  128 exits the program." #User input message
@@ -18,7 +18,11 @@ A:  .word 69
 B:  .word 71
 C1:  .word 72
 D1:  .word 74
+E1:  .word 76
+F1:  .word 77
+G1:  .word 79
 whole: .word 500
+dothalf:  375
 half:  .word 250
 quart: .word 125
 play:  .word 33
@@ -29,32 +33,142 @@ play:  .word 33
 main:  	jal input #jumps to user input function
 	jal test  #jumps to test input function
 	
-#now the music begins
-	addi $v0,$zero,33 #sets the system call to play a note
-	addi $a1,$zero,500 #duration of the note
+#now the music begins, playing Daisy Bell
+	lw $v0, play#sets the system call to play a note
 	addi $a3,$zero,127 #sets volume to max
-	lw $a0,D
+	lw $a1, dothalf #duration of the note
+	lw $a0,E1#Dai
 	syscall #executes the system call
-	lw $a0,B
+	lw $a0,D1#sy
 	syscall
-	lw $a0,G
+	lw $a0,C1#Dai
 	syscall
-	lw $a0,D
+	lw $a0,G#sy
 	syscall
-	lw $a1, half
-	lw $a0,E
+	lw $a1, quart
+	lw $a0,A#give
 	syscall
-	lw $a0, F
+	lw $a0, B#me
 	syscall
-	lw $a0, G
+	lw $a0, C1#your
 	syscall
-	lw $a0, E
+	lw $a1,half
+	lw $a0, A#ans
 	syscall
-	lw $a0, G
+	lw $a1, quart
+	lw $a0, C1#wer
 	syscall
 	lw $a1, whole
-	lw $a0, D
+	lw $a0, G#Do
 	syscall
+	lw $a1, dothalf
+	lw $a0, D1#I'm
+	syscall
+	lw $a0, G1#Half
+	syscall
+	lw $a0, E1#Cra
+	syscall
+	lw $a0, C1#zy
+	syscall
+	lw $a1, quart
+	lw $a0, A#all
+	syscall
+	lw $a0, B#for
+	syscall
+	lw $a0, C1#the
+	syscall
+	lw $a1, half
+	lw $a0, D1#love
+	syscall
+	lw $a1, quart
+	lw $a0, E1#of
+	syscall
+	lw $a1, whole
+	lw $a0, D1#you
+	syscall
+	lw $a1, quart
+	lw $a0, E1#it
+	syscall
+	lw $a0, F1#won't
+	syscall
+	lw $a0, E1#be
+	syscall
+	lw $a0, D1#a
+	syscall
+	lw $a1, half
+	lw $a0, G1#sty
+	syscall
+	lw $a1, quart
+	lw $a0, E1#lish
+	syscall
+	lw $a0, D1#marr
+	syscall
+	lw $a1, whole
+	lw $a0, C1#iage
+	syscall
+	lw $a1, quart
+	lw $a0, D1#I
+	syscall
+	lw $a1, half
+	lw $a0, E1#can't
+	syscall
+	lw $a1, quart
+	lw $a0, C1#af
+	syscall
+	lw $a1, half
+	lw $a0, A#ford
+	syscall
+	lw $a1, quart
+	lw $a0, C1#a
+	syscall
+	lw $a0, A#carr
+	syscall
+	lw $a1, whole
+	lw $a0, G#age
+	syscall
+	lw $a1, quart
+	lw $a0, G#but
+	syscall
+	lw $a1, half
+	lw $a0, C1#you'll
+	syscall
+	lw $a1, quart
+	lw $a0, E1#look
+	syscall
+	lw $a1, half
+	lw $a0, D1#sweet
+	syscall
+	lw $a1, quart
+	lw $a0, G#up
+	syscall
+	lw $a1, half
+	lw $a0, C1#on
+	syscall
+	lw $a1, quart
+	lw $a0, E1#the
+	syscall
+	lw $a0, D1#seat
+	syscall
+	lw $a0, E1#of
+	syscall
+	lw $a0, F1#a
+	syscall
+	lw $a0, G1#bi
+	syscall
+	lw $a0, E1#cyc
+	syscall
+	lw $a0, C1#le
+	syscall
+	lw $a1, half
+	lw $a0, D1#built
+	syscall
+	lw $a1, quart
+	lw $a0, G#for
+	syscall
+	addi $a1, $zero, 750 #gives us the 6 beats to hold the note
+	lw $a0, C1#two
+	syscall
+	
 	j main #jumps back to the beginning "main"
 	
 # Prompt user for a number
