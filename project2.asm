@@ -6,7 +6,6 @@
 prompt: .asciiz "Please enter a number between 0 and 128.  128 exits the program." #User input message
 error: .asciiz "Error--Please enter a number from 0 to 127 for an instrument, 128 to exit." #User Error Messager
 instr: .word 0 #default instrument piano
-beat:  .word 150 #length of a beat
 loudness: .word 127 #max 127
 rest: .word 32 #system call 32 = sleep
 C:  .word 60 #the note value for C
@@ -21,11 +20,11 @@ D1:  .word 74
 E1:  .word 76
 F1:  .word 77
 G1:  .word 79
-whole: .word 500
-dothalf:  375
-half:  .word 250
-quart: .word 125
-play:  .word 33
+whole: .word 500 #duration for a whole note
+dothalf:  375 #duration for a dotted half note
+half:  .word 250 #duration for a half note
+quart: .word 125 #duration for a quarter note
+play:  .word 33 
 
 .text #The following is programming
  
